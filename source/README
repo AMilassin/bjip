@@ -1,0 +1,19 @@
+
+JIRA GLaSS plug-in.
+
+
+Development process:
+ * atlas-debug        --- start the Atlassian JIRA SDK Development server (it will start at http://localhost:2990/jira)
+ * client/npm start   --- starts client development server
+ * atlas-mvn package  --- package and deploy application changes to the development server (run every plugin change!)
+
+Release process:
+ * client/npm build   --- build and copy client application file to GLaSS plugin resources folder
+
+
+JIRA SDK log file     --- source/target/jira/home/log/atlassian-jira.log
+
+
+
+Atlassian SDK docuemntation is available at:
+https://developer.atlassian.com/display/DOCS/Introduction+to+the+Atlassian+Plugin+SDK

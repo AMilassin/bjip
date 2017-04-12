@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:atlassian-scanner="http://www.atlassian.com/schema/atlassian-scanner"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.atlassian.com/schema/atlassian-scanner
+        http://www.atlassian.com/schema/atlassian-scanner/atlassian-scanner.xsd">
+    <atlassian-scanner:scan-indexes/>
+
+    <!--
+
+        JIRA has a special Spring use case implemented.
+        This is the atlassian-scanner.
+
+        The gist is this:
+        You have to use @ComponentImport to show that a service will be needed at runtime.
+        The spring scanner will collect this annotation and store them in _compile_ time.
+
+        Documentation:
+        https://bitbucket.org/atlassian/atlassian-spring-scanner/src/1.2.x/README.md?at=1.2.x&fileviewer=file-view-default
+
+    -->
+</beans>

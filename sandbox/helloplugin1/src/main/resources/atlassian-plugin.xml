@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="com.halfeleven.bjip.helloplugin1" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+
+
+  <!--
+        add our web resources
+        root is: src/main/resources
+    -->
+  <web-resource key="helloplugin1.resources" name="helloplugin1 Web Resources">
+    <resource type="download" name="main.js" location="/client/main.js"/>
+    <resource type="download" name="main.css" location="/client/main.css"/>
+    <context>com.acme.plugin.fancy-context</context>
+  </web-resource>
+
+
+  <!-- TOP LEVEL MENU -->
+  <web-section name="HE" key="he" location="PageLink" weight="1000">
+    <description key="he.description">The HE Plugin</description>
+  </web-section>
+  <web-item name="HE_TopMenuItem" key="he-topmenu-item" section="system.top.navigation.bar" weight="1000">
+    <description key="he-item.description">The HEItem Plugin</description>
+    <label>HE</label>
+    <link linkId="he_page_link"><![CDATA[/secure/JiraHEWebAction!default.jspa]]></link>
+    <condition class="com.atlassian.jira.plugin.webfragment.conditions.UserLoggedInCondition" />
+    <condition class="com.halfeleven.jira.he.plugin.PluginCondition" />
+  </web-item>
+
+
+  <servlet name="Hello World Servlet" key="helloworld.servlet" class="com.halfeleven.jira.he.plugin.resources.ResourcesServlet">
+    <description>Serve React resources</description>
+    <url-pattern>/he/*</url-pattern>
+  </servlet>
+
+
+
+  <!-- Web action -->
+  <webwork1 key="jttp-webaction" name="JTTP Webwork actions" class="java.lang.Object">
+    <!--
+    <resource type="i18n" name="i18n-jttp-vm" location="helloplugin1" />
+    <resource type="download" name="client/main.js" location="/client/main.js"/>
+    <resource type="download" name="client/main.css" location="/client/main.css"/>
+    <resource type="download" name="client/media/" location="/client/media/"/>
+    -->
+
+    <actions>
+      <action name="com.halfeleven.jira.he.plugin.web.JiraHEWebAction" alias="JiraHEWebAction">
+        <view name="success">/templates/main.vm</view>
+        <view name="input">/templates/main.vm</view>
+        <view name="error">/templates/error.vm</view>
+      </action>
+    </actions>
+  </webwork1>
+
+
+</atlassian-plugin>

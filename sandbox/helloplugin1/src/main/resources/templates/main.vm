@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+    <title>HE</title>
+    $webResourceManager.requireResourcesForContext("com.acme.plugin.fancy-context")
+
+</head>
+
+##$webResourceManager.requireResourcesForContext("helloplugin1")
+###requireResourcesForContext("com.acme.plugin.fancy-context")
+##$webResourceManager.requireResource("com.halfeleven.bjip.helloplugin1:helloplugin1.resources")
+
+
+<body class="aui-page-hybrid">
+  MAIN
+  <div id="heroot"></div>
+  <!--
+  <script src="/client/main.js"></script>
+  -->
+   ##   #requireResourcesForContext("com.acme.plugin.fancy-context")
+</body>
+</html>

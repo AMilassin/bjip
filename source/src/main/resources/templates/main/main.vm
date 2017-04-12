@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <title>GLaSS</title>
+
+    ## page layout
+    <meta name="decorator" content="atl.general"/>
+
+    <script>
+        var __glassAppRestRoute__ = '$rootresturl';
+        var __glassAppGlobalRoute__ = '$rootcontexturl';
+        var __webpack_public_path__ = '$rooturl';
+    </script>
+</head>
+
+<body>
+    ## this div will be used to hook the React Client application
+    <div id="glass_app_root"></div>
+
+    ## inject React script
+    #if($development)
+        ## dev server (hot reload, live compilation)
+        <script src="http://localhost:9999/static/js/bundle.js"></script>
+    #else
+        ## production mode build
+        <script src="$rooturl/static/js/init.js"></script>
+        <script src="$rooturl/static/js/main.js"></script>
+    #end
+</body>

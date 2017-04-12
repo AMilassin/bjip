@@ -1,0 +1,55 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+
+    <!-- i18n resource -->
+    <resource type="i18n" name="i18n" location="glass"/>
+
+    <!-- Static Web resources -->
+    <web-resource key="glass-resources" name="glass Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="glass.css" location="/css/glass.css"/>
+        <resource type="download" name="glass.js" location="/js/glass.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <!-- ReactJS client application -->
+        <resource type="download" name="app/" location="/app"/>
+
+        <context>glass</context>
+    </web-resource>
+
+
+
+    <!--
+        Main server servlet
+        Serves client side HTML and JS files.
+    -->
+    <servlet name="web-servlet" key="web.servlet" class="com.halfeleven.glass.jira.ProjectWebServlet">
+        <description key="server.servlet-description">Web Servlet</description>
+        <!-- url patterns are global for the whole JIRA server! -->
+        <url-pattern>/glass/project/*</url-pattern>
+    </servlet>
+
+
+    <!--
+        Internal REST API
+    -->
+    <rest name="Client REST API" i18n-name-key="glass.rest.name" key="web.rest" path="/glass" version="1.0">
+        <description key="glass.rest-description">Client REST API</description>
+    </rest>
+
+
+    <!-- project menu -->
+    <web-item key="glass-projectmenu-item" i18n-name-key="glass.projectmenu.item.name" section="jira.project.sidebar.plugins.navigation" weight="300">
+        <label key="glass.projectmenu.item.label"/>
+        <link linkId="glass.projectmenu.item.link">/plugins/servlet/glass/project/$pathEncodedProjectKey</link>
+    </web-item>
+
+</atlassian-plugin>
